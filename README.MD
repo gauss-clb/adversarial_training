@@ -3,15 +3,12 @@
 文本类别涉及10个类别：categories = ['体育', '财经', '房产', '家居', '教育', '科技', '时尚', '时政', '游戏', '娱乐']
 
 cnews.train.txt: 训练集(5000*10)
-
 cnews.val.txt: 验证集(500*10)
-
 cnews.test.txt: 测试集(1000*10)
 
 #### 下载数据
 将cnews.train.txt, cnews.val.txt, cnews.test.txt放到data目录下
-
-下载链接: https://pan.baidu.com/s/1DOgxlY42roBpOKAMKPPKWA，密码: up9d
+下载链接: [https://pan.baidu.com/s/1DOgxlY42roBpOKAMKPPKWA](https://pan.baidu.com/s/1DOgxlY42roBpOKAMKPPKWA)，密码: up9d
 
 #### 构建词表
 会在data目录下生成vocab.txt文件
