@@ -13,12 +13,12 @@ def plot_acc(attack_mode):
     plt.plot(xs, ys)
 
 if __name__ == '__main__':
-    attack_modes = ['none', 'fgsm']
-    plot_acc('none')
-    # plot_acc('fgsm')
+    attack_modes = ['none', 'fgsm', 'free', 'pgd']
+    for attack_mode in attack_modes:
+        plot_acc(attack_mode)
     plt.title('不同对抗训练方式在验证集上准确率')
     plt.xlabel('steps')
     plt.ylabel('accuracy')
     plt.legend(attack_modes)
-    plt.show()
-    # plt.savefig('1.png')
+    # plt.show()
+    plt.savefig(os.path.join('images', 'val_acc.png'))
