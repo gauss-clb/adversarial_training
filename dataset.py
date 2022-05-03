@@ -3,6 +3,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 from collections import namedtuple, Counter
 from functools import partial
+import argparse
 
 News = namedtuple('News', ['text', 'label'])
 
@@ -42,7 +43,6 @@ class THUCNews(Dataset):
         for news in datas:
             chars.extend(list(news.text))
         counter = Counter(chars)
-        # print(len(counter))
         tokens, freqs = zip(*counter.most_common(vocab_size-1))
         tokens = ['<pad>'] + list(tokens)
         with open(vocab_path, 'w', encoding='utf8') as fw:
@@ -94,8 +94,20 @@ def get_dataloader(file_paths, batch_size=2, max_len=128):
     test_dataloader = DataLoader(test_dataset, batch_size=batch_size, collate_fn=collate_fn)
     return train_dataloader, val_dataloader, test_dataloader
 
+def get_dataset_paths(dataset_dir):
+    files = ['cnews.test.txt', 'cnews.train.txt', 'cnews.val.txt']
+    file_paths = []
+    for file_path in os.listdir(dataset_dir):
+        if file_path in files:
+            file_paths.append(os.path.join(dataset_dir, file_path))
+    return file_paths
+
 if __name__ == '__main__':
-    file_paths = ['F:\\nlp_datasets\\text_cnn\\cnews.test.txt', 'F:\\nlp_datasets\\text_cnn\\cnews.train.txt', 'F:\\nlp_datasets\\text_cnn\\cnews.val.txt']
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset_dir', type=str, default='data')
+    args = parser.parse_args()
+    file_paths = get_dataset_paths(args.dataset_dir)
+    print(file_paths)
     THUCNews.init(file_paths)
     print(THUCNews.vocab_size())
     # print(THUCNews.category2id)
