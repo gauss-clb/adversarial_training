@@ -63,5 +63,5 @@ python plot.py
 | FGSM | 10.57 |
 
 ### 参考
-[https://github.com/cjymz886/fast_adversarial_for_text_classification](https://github.com/cjymz886/fast_adversarial_for_text_classification)
+[https://github.com/cjymz886/fast_adversarial_for_text_classification](https://github.com/cjymz886/fast_adversarial_for_text_classification)  
 [https://github.com/locuslab/fast_adversarial](https://github.com/locuslab/fast_adversarial)
